@@ -1,0 +1,74 @@
+﻿<!DOCTYPE HTML>
+<html ng-app="i18n">
+<meta charset='utf-8'>
+<head>
+<style>
+body {
+  font-family: "Lucida Grande","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+}
+
+body[lang=zh-CN] {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "STHeitiSC", "Helvetica","Arial","Verdana","sans-serif";
+}
+
+body[lang=ja-JP] {
+  font-family: "Helvetica Neue","Helvetica","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3","メイリオ","Meiryo","ＭＳ Ｐゴシック","Arial","Verdana","sans-serif";
+}
+
+ul {
+  padding: 0;
+  font-size: 0;
+  margin: 10px -10px;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+li a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 20px;
+  background: #333;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 30px
+}
+
+li a:hover {
+  background: #666;
+}
+
+.setlangbtn {
+  font-family: "Arial","Verdana","sans-serif";
+}
+</style>
+<script src="angular.js"></script>
+<script src="angular-translate.js"></script>
+<script src="angular-translate-loader-static-files.js"></script>
+<script src="config.js"></script>
+<script src="controller.js"></script>
+</head>
+<body lang="{{ lang }}" ng-controller="translate" ng-init="initLang()" translate-cloak>
+  <ul>
+    <li ng-if="isAvailableItem(('i18n.MENU.INS' | translate))">
+      <a translate="i18n.MENU.INS" href="#"></a>
+    </li>
+    <li ng-if="isAvailableItem(('i18n.MENU.HOME' | translate))">
+      <a translate="i18n.MENU.HOME" href="#"></a>
+    </li>
+    <li ng-if="isAvailableItem(('i18n.MENU.STORE' | translate))">
+      <a translate="i18n.MENU.STORE" href="#"></a>
+    </li>
+  </ul>
+  <div class="setlangbtn">
+    <select ng-model="lang" ng-change="setLanguage(lang)">
+      <option value="zh-CN" ng-selected="lang=='zh-CN'">简体中文</option>
+      <option value="en-US" ng-selected="lang=='en-US'">English</option>
+      <option value="ja-JP" ng-selected="lang=='ja-JP'">日本語</option>
+    </select>
+  </div>
+</body>
+</html>
